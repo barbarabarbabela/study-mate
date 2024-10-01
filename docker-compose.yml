@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  application: 
+    container_name: study-mate
+    restart: always
+    build: .
+    ports: 
+      - '3000:3000'
+    depends_on:
+      - postgres
+    volumes: 
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    
+  postgres:
+    container_name: postgres
+    image: bitnami/postgresql:13.16.0
+    ports:
+      - '5432:5432'
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=studymate
+
+volumes:
+  data:
