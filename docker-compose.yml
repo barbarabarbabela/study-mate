@@ -21,9 +21,10 @@ services:
     volumes:
       - data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=studymate
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+
 
 volumes:
   data:
